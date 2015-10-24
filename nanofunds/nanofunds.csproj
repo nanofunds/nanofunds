@@ -127,11 +127,26 @@
     <Content Include="content\materialize\font\material-design-icons\Material-Design-Icons.woff" />
     <Content Include="content\materialize\font\material-design-icons\Material-Design-Icons.ttf" />
     <Content Include="content\materialize\font\material-design-icons\Material-Design-Icons.eot" />
-    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
-    <Content Include="Scripts\jquery-2.1.1.js" />
-    <Content Include="Scripts\jquery-2.1.1.min.js" />
-    <Content Include="Scripts\materialize\materialize.js" />
-    <Content Include="Scripts\materialize\materialize.min.js" />
+    <Content Include="Scripts\app\common\factories\authenticationFactory.js" />
+    <Content Include="Scripts\app\common\factories\httpInterceptorFactory.js" />
+    <Content Include="Scripts\app\home\home.html" />
+    <Content Include="Scripts\app\indexController.js" />
+    <Content Include="Scripts\app\nano.js" />
+    <Content Include="Scripts\app\nanoConfig.js" />
+    <Content Include="Scripts\app\nav\nav.html" />
+    <Content Include="Scripts\app\nav\navController.js" />
+    <Content Include="Scripts\lib\angular-route\angular-route.js" />
+    <Content Include="Scripts\lib\angular-route\angular-route.min.js" />
+    <Content Include="Scripts\lib\angular-sanitize\angular-sanitize.js" />
+    <Content Include="Scripts\lib\angular-sanitize\angular-sanitize.min.js" />
+    <Content Include="Scripts\lib\angular\angular.min.js" />
+    <Content Include="Scripts\lib\jquery\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\lib\materialize\materialize.js" />
+    <Content Include="Scripts\lib\materialize\materialize.min.js" />
+    <Content Include="Scripts\lib\moment\moment.min.js" />
+    <Content Include="Scripts\lib\ngCurrency\ng-currency.min.js" />
+    <Content Include="Scripts\lib\ngstorage\ngStorage.js" />
+    <Content Include="Scripts\lib\ngstorage\ngStorage.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -144,7 +159,6 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\nanofunds - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\nanofunds - Web Deploy.pubxml" />
-    <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
