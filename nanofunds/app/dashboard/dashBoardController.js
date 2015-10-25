@@ -1,5 +1,5 @@
-﻿angular.module('nano').controller('dashboardController', ['$scope', '$location', '$timeout',
-function ($scope, $location, $timeout) {
+﻿angular.module('nano').controller('dashboardController', ['$scope', '$location',
+function ($scope, $location) {
 
     $scope.merchant = {
         name: 'A Test Merchant'

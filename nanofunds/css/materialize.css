@@ -5411,7 +5411,7 @@ a {
 
 html {
   line-height: 1.5;
-  font-family: "Roboto", sans-serif;
+  font-family: Helvetica, Century Gothic, GillSans, Calibri;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.87); }
   @media only screen and (min-width: 0) {
@@ -5426,7 +5426,10 @@ html {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
-  line-height: 1.1; }
+  line-height: 1.1;
+    color: #758d8c;
+    font-weight: 500;
+}
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-weight: inherit; }

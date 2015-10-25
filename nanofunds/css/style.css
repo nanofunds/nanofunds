@@ -55,3 +55,7 @@ p {
 footer.page-footer {
   margin: 0;
 }
+
+.pad-sm {
+    padding: 15px 15px 15px 15px;
+}
