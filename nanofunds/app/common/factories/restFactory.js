@@ -10,7 +10,7 @@ function ($http) {
     };
 
     factory.getTransactions = function(id) {
-        return $http.get(base + 'transactions', { params: { id: id } });
+        return $http.get(base + 'transaction', { params: { id: id } });
     };
 
     factory.put = function (model) {
