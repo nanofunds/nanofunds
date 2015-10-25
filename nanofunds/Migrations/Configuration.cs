@@ -18,11 +18,12 @@ namespace nanofunds.Migrations
             var merchant = new Merchant("nanofunds")
             {
                 Id = Guid.Empty,
+                Name = "nanofunds",
                 Balance = 0,
                 Enrolled = false
             };
 
-            context.Merchants.AddOrUpdate(x=>x.Id, merchant);
+            context.Merchants.Add(merchant);
 
             context.Ledgers.Add(new Ledger
             {

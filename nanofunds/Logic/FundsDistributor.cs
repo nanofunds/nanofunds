@@ -1,6 +1,7 @@
 ﻿namespace nanofunds.Logic
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using Models;
@@ -43,14 +44,20 @@
                 }
             }
 
+            var removeRepayments = new List<Guid>();
+
             foreach (var repayment in ledger.Repayments)
             {
                 if (repayment.ChargeOnDate == DateTime.Today)
                 {
                     ledger.Transfer(repayment.FromAccount, repayment.ToAccount, repayment.Amount,
                         TTransactionKind.Repayment);
+
+                    removeRepayments.Add(repayment.Id);
                 }
             }
+
+            ledger.Repayments.RemoveAll(x => removeRepayments.Contains(x.Id));
         }
 
         public decimal GetAdvancePercentage(Merchant merchant)
