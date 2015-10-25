@@ -17,7 +17,7 @@
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public string Get(string id)
         {
             return "value";
         }

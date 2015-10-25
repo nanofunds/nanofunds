@@ -9,17 +9,16 @@ function ($routeProvider, $httpProvider) {
         templateUrl: base + 'dashboard/dashboard.html',
         controller: 'dashboardController',
         resolve: {
-            'merchant': ['authenticationFactory', 'restFactory',
+            'projection': ['authenticationFactory', 'restFactory',
                     function (authenticationFactory, restFactory) {
-                        console.log(authenticationFactory.getMerchantId());
-                        //console.log($scope.mId);
-                        /*return restFactory.get()
+                        var mId = authenticationFactory.getMerchantId();
+                        return restFactory.get(mId)
                         .then(function(res) {
-
-                        })
+                               return res.data;
+                            })
                         .catch(function() {
                             return null;
-                        });*/
+                        });
                     }
                 ]
             }

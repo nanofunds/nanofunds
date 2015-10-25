@@ -1,15 +1,11 @@
 ﻿angular.module('nano').factory('restFactory', ['$http',
 function ($http) {
 
-    var base = 'http://localhost:2275/api';
+    var base = 'http://localhost:2275/api/';
     var factory = {};
 
-    factory.get = function () {
-        return $http.get(base + '');
-    };
-
-    factory.get = function () {
-        return $http.get(base + '', { params: { id: id } });
+    factory.get = function (id) {
+        return $http.get(base + 'merchant', { params: { id: id } });
     };
 
     factory.put = function (model) {
