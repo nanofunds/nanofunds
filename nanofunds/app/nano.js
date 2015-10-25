@@ -8,5 +8,6 @@ var app = angular.module('nano', [
     'ngSanitize',
     'ngStorage',
     'ng-currency',
-    'ui.materialize'
+    'ui.materialize',
+    'chart.js'
 ]);
