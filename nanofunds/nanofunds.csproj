@@ -122,6 +122,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\AccountSetUp\CreationForm.html" />
     <Content Include="app\common\factories\restFactory.js" />
     <Content Include="app\dashboard\dashboard.html" />
     <Content Include="app\dashboard\dashBoardController.js" />
@@ -170,6 +171,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AuthenticateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MerchantController.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
@@ -181,6 +183,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\ActualReceipt.cs" />
+    <Compile Include="Models\DTOS\Authorization.cs" />
+    <Compile Include="Models\DTOS\CloverMerchant.cs" />
     <Compile Include="Models\Ledger.cs" />
     <Compile Include="Models\Merchant.cs" />
     <Compile Include="Models\nanofunds.cs" />
@@ -230,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Authenticate\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
