@@ -118,6 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\footer\footer.html" />
     <Content Include="css\materialize.css" />
     <Content Include="css\materialize.min.css" />
     <Content Include="css\style.css" />
@@ -200,6 +201,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\dashboard\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
