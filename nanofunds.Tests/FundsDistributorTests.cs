@@ -43,7 +43,10 @@
 
         private Ledger GetLedger()
         {
-            var ledger = new Ledger();
+            var ledger = new Ledger
+            {
+                Name = "main"
+            };
 
             ledger.Accounts.Add(new Account
             {

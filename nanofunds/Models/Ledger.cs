@@ -17,6 +17,8 @@
 
         public Guid Id { get; set; }
 
+        public string Name { get; set; }
+
         public List<Repayment> Repayments { get; set; }
 
         public void ScheduleRepayment(Account from, Account to, decimal amount, DateTime chargeOnDate)

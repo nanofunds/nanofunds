@@ -28,6 +28,7 @@ namespace nanofunds.Migrations
             context.Ledgers.Add(new Ledger
             {
                 Id = Guid.NewGuid(),
+                Name = "main",
                 Accounts = new List<Account>
                 {
                     new Account
