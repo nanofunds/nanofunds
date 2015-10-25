@@ -17,15 +17,37 @@
             {
                 if (account.Merchant.Enrolled)
                 {
-                    var estimatedReceipts = account.Merchant.Predictions.SingleOrDefault(x => x.Date == DateTime.Today);
+                    var estimatedReceipts = 0m;
 
-                    if (estimatedReceipts != null)
+                    if (DateTime.Today.DayOfWeek == DayOfWeek.Friday)
+                    {
+                        estimatedReceipts = account.Merchant.Predictions
+                            .Where(
+                                x =>
+                                    x.Date == DateTime.Today || 
+                                    x.Date == DateTime.Today.AddDays(1) ||
+                                    x.Date == DateTime.Today.AddDays(2))
+                            .Sum(x => x.Amount);
+                    }
+                    else if (DateTime.Today.DayOfWeek == DayOfWeek.Saturday ||
+                             DateTime.Today.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        estimatedReceipts = 0;
+                    }
+                    else
+                    {
+                        estimatedReceipts = account.Merchant.Predictions
+                            .Where(x => x.Date == DateTime.Today)
+                            .Sum(x => x.Amount);
+                    }
+
+                    if (estimatedReceipts > 0)
                     {
                         var interestPercentage = GetInterestPercentage(account.Merchant);
                         var advancePercentage = GetAdvancePercentage(account.Merchant);
 
                         var interestAmount = account.Balance*interestPercentage/100;
-                        var advanceAmount = estimatedReceipts.Amount*advancePercentage;
+                        var advanceAmount = estimatedReceipts*advancePercentage;
 
                         if (interestAmount > 0)
                         {
