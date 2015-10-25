@@ -1,8 +1,11 @@
 ﻿namespace nanofunds.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
+
+    using Extensions;
 
     using Models;
 
@@ -29,13 +32,23 @@
             db.Entry(merchant).Collection(x=>x.Receipts).Load();
             db.Entry(merchant).Collection(x=>x.Predictions).Load();
 
+            var a = new List<decimal>();
+            var b = new List<decimal>();
+
+            foreach (var date in DateTimeExtensions.EachDay(new DateTime(2015, 9, 15), new DateTime(2015, 10, 25)))
+            {
+                a.Add(merchant.Receipts.Where(x => x.Date == date).Sum(x => x.Amount));
+                b.Add(merchant.Predictions.Where(x => x.Date == date).Sum(x => x.Amount));
+            }
+
             return new
             {
-                Merchant = merchant,
-                Graphs = new
+                Days = DateTimeExtensions.EachDay(new DateTime(2015, 9, 15), new DateTime(2015, 10, 25)).Select(x=>x.Date.ToString("d")).ToList(),
+                Merchant = merchant.Name,
+                Graphs = new[]
                 {
-                    a = merchant.Receipts.OrderByDescending(x=>x.Date).Take(21),
-                    b = merchant.Predictions.OrderByDescending(x => x.Date)
+                    a,
+                    b
                 }
             };
         }

@@ -3,15 +3,12 @@ function ($scope, $location, projection, restFactory) {
     //$location.search({});
     console.log(projection);
     $scope.merchant = {
-        name: 'A Test Merchant'
+        name: projection.Merchant
     };
 
-    $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+    $scope.labels = projection.Days;
     $scope.series = ['Actual', 'Estimated'];
-    $scope.data = [
-      [65, 59, 80, 81, 56, 55, 40],
-      [28, 48, 40, 19, 86, 27, 90]
-    ];
+    $scope.data = projection.Graphs;
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
