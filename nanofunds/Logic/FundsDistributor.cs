@@ -9,8 +9,10 @@
 
     public class FundsDistributor
     {
-        public void Distribute(Ledger ledger)
+        public void Distribute(Ledger ledger, DateTime? now = null)
         {
+            var timestamp = now ?? DateTime.Today;
+
             var nano = ledger.Accounts.SingleOrDefault(x => x.Merchant.Id == Guid.Empty);
 
             foreach (var account in ledger.Accounts)
@@ -19,25 +21,25 @@
                 {
                     var estimatedReceipts = 0m;
 
-                    if (DateTime.Today.DayOfWeek == DayOfWeek.Friday)
+                    if (timestamp.DayOfWeek == DayOfWeek.Friday)
                     {
                         estimatedReceipts = account.Merchant.Predictions
                             .Where(
                                 x =>
-                                    x.Date == DateTime.Today || 
-                                    x.Date == DateTime.Today.AddDays(1) ||
-                                    x.Date == DateTime.Today.AddDays(2))
+                                    x.Date == timestamp || 
+                                    x.Date == timestamp.AddDays(1) ||
+                                    x.Date == timestamp.AddDays(2))
                             .Sum(x => x.Amount);
                     }
-                    else if (DateTime.Today.DayOfWeek == DayOfWeek.Saturday ||
-                             DateTime.Today.DayOfWeek == DayOfWeek.Sunday)
+                    else if (timestamp.DayOfWeek == DayOfWeek.Saturday ||
+                             timestamp.DayOfWeek == DayOfWeek.Sunday)
                     {
                         estimatedReceipts = 0;
                     }
                     else
                     {
                         estimatedReceipts = account.Merchant.Predictions
-                            .Where(x => x.Date == DateTime.Today)
+                            .Where(x => x.Date == timestamp)
                             .Sum(x => x.Amount);
                     }
 
@@ -60,7 +62,7 @@
                             ledger.Transfer(nano, account, advanceAmount,
                                 TTransactionKind.Advance);
 
-                            ledger.ScheduleRepayment(account, nano, advanceAmount, DateTime.Today.AddDays(2));
+                            ledger.ScheduleRepayment(account, nano, advanceAmount, timestamp.AddDays(2));
                         }
                     }
                 }
@@ -70,7 +72,7 @@
 
             foreach (var repayment in ledger.Repayments)
             {
-                if (repayment.ChargeOnDate == DateTime.Today)
+                if (repayment.ChargeOnDate == timestamp)
                 {
                     ledger.Transfer(repayment.FromAccount, repayment.ToAccount, repayment.Amount,
                         TTransactionKind.Repayment);

@@ -74,7 +74,7 @@
             merchant.AddReceipt(100, now.AddDays(40));
             merchant.AddReceipt(170, now.AddDays(41));
 
-            var estimatedReceipts = calculator.Calculate(merchant, 2);
+            var estimatedReceipts = calculator.Calculate(merchant.Receipts, 2);
 
             var db = new nanofunds();
 

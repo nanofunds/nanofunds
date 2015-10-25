@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nanofunds", "nanofunds\nano
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nanofunds.Tests", "nanofunds.Tests\nanofunds.Tests.csproj", "{40337DBC-F19C-478C-851C-AC4A4E6C85B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nanofunds.Console", "nanofunds.Console\nanofunds.Console.csproj", "{5ABDEE40-F899-4F1D-B17B-B39B1E8E1178}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{40337DBC-F19C-478C-851C-AC4A4E6C85B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40337DBC-F19C-478C-851C-AC4A4E6C85B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40337DBC-F19C-478C-851C-AC4A4E6C85B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ABDEE40-F899-4F1D-B17B-B39B1E8E1178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ABDEE40-F899-4F1D-B17B-B39B1E8E1178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ABDEE40-F899-4F1D-B17B-B39B1E8E1178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ABDEE40-F899-4F1D-B17B-B39B1E8E1178}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,17 +10,17 @@
 
     public class EstimatedReceiptsCalculator
     {
-        public List<Receipt> Calculate(Merchant merchant, int weeks)
+        public List<PredictedReceipt> Calculate(List<ActualReceipt> actualReceipts, int weeks)
         {
-            var receipts = new List<Receipt>().Concat(merchant.Receipts).ToList();
+            var receipts = new List<Receipt>().Concat(actualReceipts).ToList();
             var fourWeekAverage = GetMovingAverage(receipts);
             var today = receipts.Last().Date;
 
-            var predictions = new List<Receipt>();
+            var predictions = new List<PredictedReceipt>();
 
             foreach (var date in DateTimeExtensions.EachDay(today.AddDays(1), today.AddDays(weeks*7)))
             {
-                var prediction = new Receipt
+                var prediction = new PredictedReceipt
                 {
                     Date = date,
                     Amount = fourWeekAverage[date.DayOfWeek]
