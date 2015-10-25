@@ -118,6 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\common\factories\restFactory.js" />
     <Content Include="app\dashboard\dashboard.html" />
     <Content Include="app\dashboard\dashBoardController.js" />
     <Content Include="app\footer\footer.html" />

@@ -1,6 +1,6 @@
-﻿angular.module('nano').controller('dashboardController', ['$scope', '$location',
-function ($scope, $location) {
-
+﻿angular.module('nano').controller('dashboardController', ['$scope', '$location', 'restFactory',
+function ($scope, $location, restFactory) {
+    //$location.search({});
     $scope.merchant = {
         name: 'A Test Merchant'
     };
