@@ -1,31 +1,43 @@
 namespace nanofunds.Migrations
 {
     using System;
-    using System.Data.Entity;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<nanofunds.Models.nanofunds>
+    using Models;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<nanofunds>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(nanofunds.Models.nanofunds context)
+        protected override void Seed(nanofunds context)
         {
-            //  This method will be called after migrating to the latest version.
+            var merchant = new Merchant("nanofunds")
+            {
+                Id = Guid.Empty,
+                Name = "nanofunds",
+                Balance = 0,
+                Enrolled = false
+            };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Merchants.Add(merchant);
+
+            context.Ledgers.Add(new Ledger
+            {
+                Id = Guid.NewGuid(),
+                Accounts = new List<Account>
+                {
+                    new Account
+                    {
+                        Balance = 0,
+                        Id = Guid.Empty,
+                        Merchant = merchant
+                    }
+                }
+            });
         }
     }
 }

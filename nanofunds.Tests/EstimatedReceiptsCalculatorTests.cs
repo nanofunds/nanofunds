@@ -18,7 +18,7 @@
 
             var now = new DateTime(2015, 10, 19);
 
-            var merchant = new Merchant
+            var merchant = new Merchant("nanofunds-merchant-1")
             {
                 Id = Guid.NewGuid(),
                 Balance = 0,
