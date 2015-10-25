@@ -4,15 +4,9 @@
 
     public class Repayment
     {
-        public Guid Id { get; set; } 
-
-        public Account FromAccount { get; set; }
-
-        public Account ToAccount { get; set; }
-
-        public decimal Amount { get; set; }
-
-        public DateTime ChargeOnDate { get; set; }
+        public Repayment()
+        {
+        }
 
         public Repayment(Account from, Account to, decimal amount, DateTime chargeOnDate)
         {
@@ -22,5 +16,15 @@
             Amount = amount;
             ChargeOnDate = chargeOnDate;
         }
+
+        public decimal Amount { get; set; }
+
+        public DateTime ChargeOnDate { get; set; }
+
+        public Account FromAccount { get; set; }
+
+        public Guid Id { get; set; }
+
+        public Account ToAccount { get; set; }
     }
 }

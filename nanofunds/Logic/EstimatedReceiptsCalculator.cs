@@ -12,7 +12,7 @@
     {
         public List<PredictedReceipt> Calculate(List<ActualReceipt> actualReceipts, int weeks)
         {
-            var receipts = new List<Receipt>().Concat(actualReceipts).ToList();
+            var receipts = new List<Receipt>().Concat(actualReceipts.OrderBy(x=>x.Date)).ToList();
             var fourWeekAverage = GetMovingAverage(receipts);
             var today = receipts.Last().Date;
 
@@ -22,6 +22,7 @@
             {
                 var prediction = new PredictedReceipt
                 {
+                    Id = Guid.NewGuid(),
                     Date = date,
                     Amount = fourWeekAverage[date.DayOfWeek]
                 };

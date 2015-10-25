@@ -4,6 +4,10 @@
 
     public class ActualReceipt : Receipt
     {
+        public ActualReceipt()
+        {
+        }
+
         public ActualReceipt(Merchant merchant, decimal amount, DateTime date)
             : base(merchant, amount, date)
         {
