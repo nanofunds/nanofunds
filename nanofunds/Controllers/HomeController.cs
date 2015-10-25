@@ -10,6 +10,9 @@ namespace nanofunds.Controllers
     using System.Diagnostics;
     using System.Web.Configuration;
 
+    using Models;
+    using Models.DTOS;
+
     using RestSharp;
 
     public class HomeController : Controller
@@ -24,19 +27,19 @@ namespace nanofunds.Controllers
             }
             else
             {
-                this.TestRequest(merchant_id, code);
+                this.GetToken(merchant_id, code);
             }
             
             return this.View();
         }
 
-        private void TestRequest(string merchantId, string code)
+        private void GetToken(string merchantId, string code)
         {
-            var cloverApiUrl = WebConfigurationManager.AppSettings["CloverApiUrl"];
+            var tokenEndpoint = WebConfigurationManager.AppSettings["CloverTokenEndpoint"];
             var clientId = WebConfigurationManager.AppSettings["ClientId"];
             var secretKey = WebConfigurationManager.AppSettings["SecretKey"];
 
-            var client = new RestClient("https://sandbox.dev.clover.com");
+            var client = new RestClient(tokenEndpoint);
 
             var request = new RestRequest("/oauth/token?client_id={client_id}&client_secret={client_secret}&code={code}", Method.GET);
 
@@ -44,8 +47,36 @@ namespace nanofunds.Controllers
             request.AddUrlSegment("client_secret", secretKey);
             request.AddUrlSegment("code", code);
 
-            var response = client.Execute(request);
-            var content = response.Content;
+            var authorization = client.Execute<Authorization>(request).Data;
+            var db = new nanofunds();
+            var merchant = db.Merchants.SingleOrDefault(m => m.SourceId == merchantId);
+
+            if (merchant == null)
+            {
+                var cloverMerchant = this.GetMerchant(merchantId, authorization.access_token);
+                merchant = new Merchant(merchantId) { Id = Guid.NewGuid(), Name = cloverMerchant.Name, SourceToken = authorization.access_token };
+                db.Merchants.Add(merchant);
+            }
+            else
+            {
+                merchant.SourceToken = authorization.access_token;
+            }
+            db.SaveChanges();
+        }
+
+        private CloverMerchant GetMerchant(string merchantId, string accessToken)
+        {
+            var endpoint = WebConfigurationManager.AppSettings["CloverApiUrl"];
+            var client = new RestClient(endpoint);
+
+            var request = new RestRequest("/merchants/{mId}", Method.GET);
+            request.AddUrlSegment("mId", merchantId);
+
+            request.AddHeader("Authorization", "Bearer " + accessToken);
+
+            var merchant = client.Execute<CloverMerchant>(request).Data;
+
+            return merchant;
         }
     }
 }
