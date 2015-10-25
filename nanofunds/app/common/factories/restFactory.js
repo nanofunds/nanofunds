@@ -1,11 +1,16 @@
 ﻿angular.module('nano').factory('restFactory', ['$http',
 function ($http) {
 
-    var base = 'http://nanofunds.azurewebsites.net/api/';
+    var base = 'http://localhost:2275/api/';
+
     var factory = {};
 
     factory.get = function (id) {
         return $http.get(base + 'merchant', { params: { id: id } });
+    };
+
+    factory.getTransactions = function(id) {
+        return $http.get(base + 'transactions', { params: { id: id } });
     };
 
     factory.put = function (model) {

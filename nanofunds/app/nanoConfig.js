@@ -22,7 +22,25 @@ function ($routeProvider, $httpProvider) {
                     }
                 ]
             }
-        })
+    })
+    .when('/transactions', {
+        templateUrl: base + 'transactions/transactions.html',
+        controller: 'transactionsController',
+        resolve: {
+            'projection': ['authenticationFactory', 'restFactory',
+                    function (authenticationFactory, restFactory) {
+                        var mId = authenticationFactory.getMerchantId();
+                        return restFactory.getTransactions(mId)
+                        .then(function (res) {
+                            return res.data;
+                        })
+                        .catch(function () {
+                            return null;
+                        });
+                    }
+            ]
+        }
+    })
     .otherwise('/dashboard');
 
 }]);
