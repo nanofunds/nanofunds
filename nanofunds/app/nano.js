@@ -7,5 +7,6 @@ var app = angular.module('nano', [
     'ngRoute',
     'ngSanitize',
     'ngStorage',
-    'ng-currency'
+    'ng-currency',
+    'ui.materialize'
 ]);
