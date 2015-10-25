@@ -20,13 +20,24 @@
         }
 
         // GET api/<controller>/5
-        public List<Merchant> Get(string id)
+        public object Get(string id)
         {
             var db = new nanofunds();
 
-            var merchants = db.Merchants.ToList();
+            var merchant = db.Merchants.SingleOrDefault(x => x.SourceId == id);
 
-            return merchants;
+            db.Entry(merchant).Collection(x=>x.Receipts).Load();
+            db.Entry(merchant).Collection(x=>x.Predictions).Load();
+
+            return new
+            {
+                Merchant = merchant,
+                Graphs = new
+                {
+                    a = merchant.Receipts.OrderByDescending(x=>x.Date).Take(21),
+                    b = merchant.Predictions.OrderByDescending(x => x.Date)
+                }
+            };
         }
 
         // POST api/<controller>

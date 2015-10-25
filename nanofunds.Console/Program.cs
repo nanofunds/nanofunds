@@ -24,7 +24,7 @@
             db.Entry(ledger).Collection(x => x.Accounts).Load();
             db.Entry(ledger).Collection(x => x.Repayments).Load();
 
-            var today = new DateTime(2015, 10, 1);
+            var today = new DateTime(2015, 9, 23);
 
             foreach (var merchant in merchants)
             {
