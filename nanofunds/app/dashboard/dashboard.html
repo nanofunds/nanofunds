@@ -1,11 +1,17 @@
 ﻿<section class="">
-    <article class="row">
+    <article class="row" ng-if="true">
         <div class="col s12">
             <h4 class="pad-sm">{{merchant.name}}</h4>
             <canvas id="line" class="chart chart-line" chart-data="data"
                     chart-labels="labels" chart-legend="true" chart-series="series"
                     chart-click="onClick">
             </canvas>
+        </div>
+    </article>
+
+    <article class="row" ng-if="true">
+        <div class="col s12">
+            <h4 class="pad-sm">Account Setup</h4>
         </div>
     </article>
 </section>
