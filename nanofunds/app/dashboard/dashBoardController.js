@@ -1,6 +1,5 @@
 ﻿angular.module('nano').controller('dashboardController', ['$scope', '$location', 'projection', 'restFactory',
 function ($scope, $location, projection, restFactory) {
-    //$location.search({});
     console.log(projection);
     $scope.merchant = {
         name: projection.Merchant
@@ -12,7 +11,4 @@ function ($scope, $location, projection, restFactory) {
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
-
-    console.log('dashboard controlelr');
-
 }]);
