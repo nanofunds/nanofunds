@@ -1,7 +1,7 @@
 ﻿angular.module('nano').factory('restFactory', ['$http',
 function ($http) {
 
-    var base = 'http://localhost:2275/api/';
+    var base = 'http://nanofunds.azurewebsites.net/api/';
     var factory = {};
 
     factory.get = function (id) {

@@ -1,7 +1,10 @@
 ﻿namespace nanofunds.Controllers
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Http;
+
+    using Models;
 
     public class MerchantController : ApiController
     {
@@ -17,9 +20,13 @@
         }
 
         // GET api/<controller>/5
-        public string Get(string id)
+        public List<Merchant> Get(string id)
         {
-            return "value";
+            var db = new nanofunds();
+
+            var merchants = db.Merchants.ToList();
+
+            return merchants;
         }
 
         // POST api/<controller>
