@@ -127,6 +127,8 @@
     <Content Include="app\dashboard\dashboard.html" />
     <Content Include="app\dashboard\dashBoardController.js" />
     <Content Include="app\footer\footer.html" />
+    <Content Include="app\transactions\transactions.html" />
+    <Content Include="app\transactions\transactionsController.js" />
     <Content Include="css\materialize.css" />
     <Content Include="css\materialize.min.css" />
     <Content Include="css\style.css" />

@@ -21,7 +21,8 @@ function ($routeProvider, $httpProvider) {
                         });
                     }
                 ]
-            }
+        },
+        activetab: 'dashboard'
     })
     .when('/transactions', {
         templateUrl: base + 'transactions/transactions.html',
@@ -39,7 +40,8 @@ function ($routeProvider, $httpProvider) {
                         });
                     }
             ]
-        }
+        },
+        activetab: 'trasnactions'
     })
     .otherwise('/dashboard');
 
