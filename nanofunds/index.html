@@ -1,24 +1,27 @@
 ﻿<!DOCTYPE html>
 <html ng-app="nano">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-<script src="/css/materialize.css"></script>
-<script src="/css/materialize.min.css"></script>
 <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="/css/materialize.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
     <title>Nano</title>
-	<meta charset="utf-8" />
+
 </head>
 <body id="Main" ng-controller="indexController">
 <div id="Menus" ng-include="'/app/nav/nav.html'" ng-controller="navController"></div>
 
 <div id="View" ng-view>
-
 </div>
 
-<div id="Menus" ng-include="'/app/footer/footer.html'"></div>
+<div id="Footer" ng-include="'/app/footer/footer.html'"></div>
 <script src="/lib/jquery/jquery-2.1.1.min.js"></script>
-<script src="/lib/materialize/materialize.min.js"></script>
+<script src="/lib/materialize/materialize.js"></script>
+
+
 <script src="/lib/angular/angular.min.js"></script>
+    <script src="lib/angular-materialize/angular-materialize.js"></script>
 <script src="/lib/angular-route/angular-route.min.js"></script>
 <script src="/lib/ngCurrency/ng-currency.min.js"></script>
 <script src="/lib/angular-sanitize/angular-sanitize.min.js"></script>
@@ -34,6 +37,7 @@
     <!--
 <script src="Scripts/app/common/factories/authenticationFactory.js"></script> -->
 <script src="/app/common/factories/httpInterceptorFactory.js"></script>
+
 
 </body>
 </html>
