@@ -5,13 +5,10 @@ function ($routeProvider, $httpProvider) {
     var base = '/app/';
 
     $routeProvider
-    .when('/', {
-        templateUrl: base + 'home/home.html'
-    })
     .when('/dashboard', {
         templateUrl: base + 'dashboard/dashboard.html',
         controller: 'dashboardController'
-     })
-    .otherwise('/');
+    })
+    .otherwise('/dashboard');
 
 }]);

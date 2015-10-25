@@ -1,6 +1,10 @@
 ﻿angular.module('nano').controller('dashboardController', ['$scope', '$location', '$timeout',
 function ($scope, $location, $timeout) {
 
+    $scope.merchant = {
+        name: 'A Test Merchant'
+    };
+
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Series A', 'Series B'];
     $scope.data = [
