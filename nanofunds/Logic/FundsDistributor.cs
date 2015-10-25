@@ -1,7 +1,6 @@
 ﻿namespace nanofunds.Logic
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
 
     using Models;
@@ -26,7 +25,7 @@
                         estimatedReceipts = account.Merchant.Predictions
                             .Where(
                                 x =>
-                                    x.Date == timestamp || 
+                                    x.Date == timestamp ||
                                     x.Date == timestamp.AddDays(1) ||
                                     x.Date == timestamp.AddDays(2))
                             .Sum(x => x.Amount);
@@ -68,20 +67,16 @@
                 }
             }
 
-            var removeRepayments = new List<Guid>();
-
             foreach (var repayment in ledger.Repayments)
             {
-                if (repayment.ChargeOnDate == timestamp)
+                if (repayment.ChargeOnDate == timestamp && !repayment.IsPaid)
                 {
                     ledger.Transfer(repayment.FromAccount, repayment.ToAccount, repayment.Amount,
                         TTransactionKind.Repayment);
 
-                    removeRepayments.Add(repayment.Id);
+                    repayment.IsPaid = true;
                 }
             }
-
-            ledger.Repayments.RemoveAll(x => removeRepayments.Contains(x.Id));
         }
 
         public decimal GetAdvancePercentage(Merchant merchant)

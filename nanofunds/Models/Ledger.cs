@@ -23,7 +23,7 @@
 
         public void ScheduleRepayment(Account from, Account to, decimal amount, DateTime chargeOnDate)
         {
-            Repayments.Add(new Repayment(from, to, amount, chargeOnDate));
+            Repayments.Add(new Repayment(this, from, to, amount, chargeOnDate));
         }
 
         public void Transfer(Account from, Account to, decimal amount, TTransactionKind kind)
