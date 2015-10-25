@@ -5,11 +5,14 @@
 
     public class Merchant
     {
-        public Merchant()
+        public Merchant(string sourceId)
         {
+            SourceId = sourceId;
             Receipts = new List<ActualReceipt>();
             Predictions = new List<PredictedReceipt>();
         }
+
+        public bool Enrolled { get; set; }
 
         public Guid Id { get; set; }
 
@@ -20,6 +23,10 @@
         public List<ActualReceipt> Receipts { get; set; }
 
         public decimal Balance { get; set; }
+
+        public string SourceId { get; set; }
+
+        public string SourceToken { get; set; }
 
         public void AddReceipt(decimal amount, DateTime date)
         {

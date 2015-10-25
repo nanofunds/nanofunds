@@ -64,6 +64,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="EstimatedReceiptsCalculatorTests.cs" />
+    <Compile Include="FundsDistributorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

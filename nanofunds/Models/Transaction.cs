@@ -12,6 +12,8 @@
 
         public DateTime Timestamp { get; set; }
 
+        public TTransactionKind Kind { get; set; }
+
         public TTransaction Type { get; set; }
     }
 }
