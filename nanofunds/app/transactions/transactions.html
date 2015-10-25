@@ -5,17 +5,19 @@
             <table class="responsive-table striped">
                 <thead>
                     <tr>
-                        <th data-field="id">Name</th>
-                        <th data-field="name">Item Name</th>
-                        <th data-field="price">Item Price</th>
+                        <th data-field="date">Date</th>
+                        <th data-field="kind">Kind</th>
+                        <th data-field="type">Type</th>
+                        <th data-field="amount">Amount</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>Alvin</td>
-                        <td>Eclair</td>
-                        <td>$0.87</td>
+                    <tr ng-repeat="transaction in transactions">
+                        <td>{{transaction.Date | date :"MM/dd/yyyy"}}</td>
+                        <td>{{transaction.Kind}}</td>
+                        <td>{{transaction.Type}}</td>
+                        <td>{{transaction.Amount | currency : "$"}}</td>
                     </tr>
                 </tbody>
             </table>

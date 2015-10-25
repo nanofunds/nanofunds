@@ -28,11 +28,12 @@ function ($routeProvider, $httpProvider) {
         templateUrl: base + 'transactions/transactions.html',
         controller: 'transactionsController',
         resolve: {
-            'projection': ['authenticationFactory', 'restFactory',
+            'transactions': ['authenticationFactory', 'restFactory',
                     function (authenticationFactory, restFactory) {
                         var mId = authenticationFactory.getMerchantId();
                         return restFactory.getTransactions(mId)
                         .then(function (res) {
+
                             return res.data;
                         })
                         .catch(function () {
@@ -41,7 +42,7 @@ function ($routeProvider, $httpProvider) {
                     }
             ]
         },
-        activetab: 'trasnactions'
+        activetab: 'transactions'
     })
     .otherwise('/dashboard');
 
