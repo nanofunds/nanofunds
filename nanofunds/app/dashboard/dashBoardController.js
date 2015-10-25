@@ -1,7 +1,7 @@
-﻿angular.module('nano').controller('dashboardController', ['$scope', '$location', 'restFactory',
-function ($scope, $location, restFactory) {
+﻿angular.module('nano').controller('dashboardController', ['$scope', '$location', 'projection', 'restFactory',
+function ($scope, $location, projection, restFactory) {
     //$location.search({});
-    //console.log($scope.mId);
+    console.log(projection);
     $scope.merchant = {
         name: 'A Test Merchant'
     };
