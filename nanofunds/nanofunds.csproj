@@ -50,6 +50,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -150,9 +151,18 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Logic\EstimatedReceiptsCalculator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\ActualReceipt.cs" />
+    <Compile Include="Models\Ledger.cs" />
+    <Compile Include="Models\Merchant.cs" />
     <Compile Include="Models\nanofunds.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Receipt.cs" />
+    <Compile Include="Models\Enums\TTransaction.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\PredictedReceipt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -183,7 +193,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2275</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
