@@ -138,7 +138,6 @@
     <Content Include="img\background1.jpg" />
     <Content Include="img\background2.jpg" />
     <Content Include="img\background3.png" />
-    <Content Include="img\NanoLogoSmall.png" />
     <Content Include="app\common\factories\authenticationFactory.js" />
     <Content Include="app\common\factories\httpInterceptorFactory.js" />
     <Content Include="app\home\home.html" />
